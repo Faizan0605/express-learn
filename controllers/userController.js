@@ -1,13 +1,18 @@
+const productServices = require('../services/userServices')
+
 const getUser = (req, res) => {
-    res.send('Fetching all users');
+    const ans = productServices.GetUserMsg()
+    res.send(ans);
 };
 
 const getUserById = (req, res) => {
-    res.send(`Fetching user with ID: ${req.params.id}`);
+    const id = productServices.getUserId(req)
+    res.send(`Fetching user with ID: ${id}`);
 };
 
 const postUser = (req, res) => {
-    res.send('Adding a new user');
+    const ans = productServices.PostUserMsg()
+    res.send(ans);
 };
 
 module.exports = {

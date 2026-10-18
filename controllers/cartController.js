@@ -1,9 +1,13 @@
+const cartServices = require('../services/cartServices')
+
 const getCartByUserId = (req, res) => {
-    res.send(`Fetching cart for user with ID: ${req.params.userId}`);
+    const userid = cartServices.getUserId(req)
+    res.send(`Fetching cart for user with ID: ${userid}`);
 };
 
 const postCartByUserId = (req, res) => {
-    res.send(`Adding product to cart for user with ID: ${req.params.userId}`);
+    const userid = cartServices.getUserId(req)
+    res.send(`Adding product to cart for user with ID: ${userid}`);
 };
 
 module.exports = {
