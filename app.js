@@ -2,12 +2,16 @@ const express = require('express');
 
 const app = express();
 
-
+// // Body parser middlewares
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 
 const productRouter = require('./routes/products');
 const categoryRouter = require('./routes/category');
 const booksRouter = require('./routes/books');
+const studentRouter = require('./routes/students');
+const courseRouter = require('./routes/courses');
 
 // Logger middleware
 app.use((req, res, next) => {
@@ -15,16 +19,21 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routes
-// app.use('/products', productRouter);
-// app.use('/category', categoryRouter);
-app.use('/books', booksRouter);
 
-// 404 Handler
-app.use((req, res) => {
-    res.status(404).send('<h1>404 - Page Not Found</h1>');
+app.get('/', (req, res) => {
+    res.send('<h1>Welcome to the School Portal API!</h1>');
 });
 
-app.listen(4000, () => {
-    console.log("Server is running on http://localhost:4000");
+
+app.use('/students', studentRouter);
+app.use('/courses', courseRouter);
+
+
+app.use((req, res) => {
+    res.status(404).send('<h1>404 - Page not found</h1>');
+});
+
+const PORT = 4000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
