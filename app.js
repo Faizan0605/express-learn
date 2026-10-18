@@ -2,16 +2,9 @@ const express = require('express');
 
 const app = express();
 
-// // Body parser middlewares
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-
-
-const productRouter = require('./routes/products');
-const categoryRouter = require('./routes/category');
-const booksRouter = require('./routes/books');
-const studentRouter = require('./routes/students');
-const courseRouter = require('./routes/courses');
+const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 // Logger middleware
 app.use((req, res, next) => {
@@ -19,16 +12,17 @@ app.use((req, res, next) => {
     next();
 });
 
-
+// Home Route
 app.get('/', (req, res) => {
-    res.send('<h1>Welcome to the School Portal API!</h1>');
+    res.send('<h1>Welcome to the E-Commerce API!</h1>');
 });
 
 
-app.use('/students', studentRouter);
-app.use('/courses', courseRouter);
+app.use('/users', userRoutes);
+app.use('/products', productRoutes);
+app.use('/cart', cartRoutes);
 
-
+// 404 Route Handler
 app.use((req, res) => {
     res.status(404).send('<h1>404 - Page not found</h1>');
 });
