@@ -1,0 +1,23 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "express-learning",
+  "homepage": "https://github.com/Faizan0605/express-learning#readme",
+  "bugs": {
+    "url": "https://github.com/Faizan0605/express-learning/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Faizan0605/express-learning.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
