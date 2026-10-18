@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Products</title>
-    <h1>All Products</h1>
-
-    <form>
-        <label for="product">Product Name</label>
-        <input id="product" name="productName"/>
-        <button type="submit">Submit</button>
-    </form>
+    
 </head>
 <body>
+    <h1>All Products</h1>
     
-</body>
+    <form onsubmit="submitHandler(event)">
+        <label for="product">Product Name</label>
+        <input id="product" name="productName" />
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="products.js"></script>
+    
+    </body>
 </html>

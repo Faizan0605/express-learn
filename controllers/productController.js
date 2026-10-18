@@ -11,8 +11,10 @@ const getProductById = (req, res) => {
 }
 
 const postProduct = (req, res) => {
-    const ans = productServices.postProductMsg()
-    res.send(ans);
+
+    const data = req.body;
+
+    res.json({ value: data.productName });
 }
 
 

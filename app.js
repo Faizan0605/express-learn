@@ -6,11 +6,14 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 
+app.use(express.static('public'))
+app.use(express.json())
+
 // Logger middleware
-app.use((req, res, next) => {
-    console.log(`${req.method} request made to ${req.url}`);
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log(`${req.method} request made to ${req.url}`);
+//     next();
+// });
 
 // Home Route
 app.get('/', (req, res) => {
