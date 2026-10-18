@@ -7,6 +7,9 @@ const getUser = (req, res) => {
 
 const getUserById = (req, res) => {
     const id = productServices.getUserId(req)
+    if (!id) {
+        return handleError(res, { statusCode: 404, message: "Id not found" });
+    }
     res.send(`Fetching user with ID: ${id}`);
 };
 
