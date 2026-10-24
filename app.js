@@ -9,11 +9,54 @@ const cartRoutes = require('./routes/cartRoutes');
 app.use(express.static('public'))
 app.use(express.json())
 
-// Logger middleware
-// app.use((req, res, next) => {
-//     console.log(`${req.method} request made to ${req.url}`);
-//     next();
-// });
+
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '123456',
+    database: 'testdb1'
+})
+
+connection.connect((err) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+
+    console.log("Connection has been created");
+
+    const creationQuery = `create table(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(20),
+        email VARCHAR(20)
+    )`
+
+    connection.execute(creationQuery, (err) => {
+        if (err) {
+            console.log(err);
+            connection.end();
+            return
+        }
+        console.log("Table is created")
+    })
+
+
+
+})
+
+
+
+
+
+
+
+
+
+app.use((req, res, next) => {
+    console.log(`${req.method} request made to ${req.url}`);
+    next();
+});
 
 // Home Route
 app.get('/', (req, res) => {
